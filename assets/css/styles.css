@@ -306,6 +306,11 @@ body.menu-open { overflow: hidden; }
   .courses__header { flex-direction: column; align-items: flex-start; }
 }
 
+.course-footer-note { display: flex; align-items: center; gap: .6rem; margin-top: 1.75rem; padding: 1rem 1.25rem; background: rgba(226,0,116,.05); border: 1px solid rgba(226,0,116,.15); border-radius: var(--radius-md); font-size: var(--text-sm); color: var(--color-muted-light); line-height: 1.6; }
+.course-footer-note svg { flex-shrink: 0; color: var(--color-dark); }
+.course-footer-note strong { color: var(--color-text); }
+.course-footer-note a { color: var(--color-dark); font-weight: 600; text-underline-offset: 2px; }
+
 /* ── CTA SECTION ─────────────────────────────────────────────────── */
 .cta-section { background: var(--color-dark); border-radius: var(--radius-section); padding: 3rem 1.5rem; scroll-margin-top: calc(68px + 1.5rem); }
 .cta-section__inner { max-width: var(--container-max); margin: 0 auto; display: grid; grid-template-columns: 1fr 1fr; gap: 5rem; align-items: center; }
