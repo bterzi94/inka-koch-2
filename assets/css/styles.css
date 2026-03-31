@@ -150,7 +150,7 @@ p  { line-height: 1.75; }
   width: 2.5rem;
   height: 2.5rem;
   margin-top: -1.25rem;
-  background: var(--color-dark);
+  background: var(--color-text);
   color: var(--color-cream);
   border-radius: 50%;
   display: flex;
@@ -239,7 +239,7 @@ body.menu-open { overflow: hidden; }
 .value-prop__line { background: rgba(226,202,175,.4); margin-top: -20px; margin-bottom: -20px; }
 .value-prop__left { position: relative; padding: clamp(3rem, 6vw, 5rem) clamp(2rem, 4vw, 3.5rem) clamp(3rem, 6vw, 5rem) var(--container-pad-x); }
 .value-prop__deco { position: absolute; top: -20px; left: 0; width: 50%; height: calc(100% + 20px); background: linear-gradient(0deg, rgba(226,202,175,.18) 0%, rgba(226,202,175,0) 100%); pointer-events: none; }
-.value-prop__title { font-family: var(--font-heading); font-size: clamp(1.75rem, 3vw, 2.5rem); font-weight: 400; line-height: 1.2; letter-spacing: -.02em; color: var(--color-dark); margin-bottom: 2.25rem; max-width: 66%; }
+.value-prop__title { font-family: var(--font-heading); font-size: clamp(1.75rem, 3vw, 2.5rem); font-weight: 400; line-height: 1.2; letter-spacing: -.02em; color: var(--color-text); margin-bottom: 2.25rem; max-width: 66%; }
 .value-prop__right { padding: clamp(3rem, 6vw, 5rem) var(--container-pad-x) clamp(3rem, 6vw, 5rem) clamp(2rem, 4vw, 3.5rem); background: rgba(226,202,175,.06); }
 .value-prop__video { border-radius: var(--radius-card); overflow: hidden; box-shadow: var(--shadow-lg); aspect-ratio: 16/9; background: var(--color-dark); }
 .value-prop__video iframe { width: 100%; height: 100%; border: none; display: block; }
@@ -255,7 +255,7 @@ body.menu-open { overflow: hidden; }
 .courses { background: var(--color-cream); padding: var(--section-pad-y) 0; border-top: 1px solid var(--color-border-light); scroll-margin-top: calc(68px + 1.5rem); }
 .courses__inner { max-width: var(--container-max); margin: 0 auto; padding: 0 var(--container-pad-x); }
 .courses__header { display: flex; align-items: flex-end; justify-content: space-between; margin-bottom: 3rem; gap: 2rem; }
-.courses__title { font-size: clamp(1.75rem, 3vw, 2.5rem); font-weight: 700; color: var(--color-dark); margin-top: .5rem; }
+.courses__title { font-size: clamp(1.75rem, 3vw, 2.5rem); font-weight: 700; color: var(--color-text); margin-top: .5rem; }
 .courses__subtitle { font-size: var(--text-sm); color: var(--color-muted); white-space: nowrap; padding-bottom: .25rem; }
 
 .course-list { list-style: none; margin: 0; padding: 0; }
@@ -296,7 +296,7 @@ body.menu-open { overflow: hidden; }
 .testimonials { background: var(--color-cream); padding: var(--section-pad-y) 0; border-top: 1px solid var(--color-border-light); scroll-margin-top: calc(68px + 1.5rem); }
 .testimonials__inner { max-width: var(--container-max); margin: 0 auto; padding: 0 var(--container-pad-x); }
 .testimonials__header { display: flex; align-items: flex-end; justify-content: space-between; margin-bottom: 2.5rem; gap: 2rem; }
-.testimonials__title { font-size: clamp(1.75rem, 3vw, 2.5rem); font-weight: 700; color: var(--color-dark); margin-top: .5rem; }
+.testimonials__title { font-size: clamp(1.75rem, 3vw, 2.5rem); font-weight: 700; color: var(--color-text); margin-top: .5rem; }
 .testimonials__nav { display: flex; gap: .5rem; }
 .testimonials__btn { width: 2.75rem; height: 2.75rem; border-radius: 50%; border: 1.5px solid var(--color-border-light); background: var(--color-cream); color: var(--color-text); display: flex; align-items: center; justify-content: center; cursor: pointer; transition: background var(--ease), border-color var(--ease); flex-shrink: 0; }
 .testimonials__btn:hover { background: var(--color-dark); color: var(--color-cream); border-color: var(--color-dark); }
@@ -372,7 +372,7 @@ body.menu-open { overflow: hidden; }
 
 /* Left: content */
 .contact__content { display: flex; flex-direction: column; justify-content: center; gap: 2.5rem; padding: var(--section-pad-y) var(--container-pad-x); background: var(--color-cream); }
-.contact__title { font-size: clamp(2rem, 3vw, 2.75rem); font-weight: 700; color: var(--color-dark); line-height: 1.15; letter-spacing: -.02em; margin: 0; max-width: 66%; }
+.contact__title { font-size: clamp(2rem, 3vw, 2.75rem); font-weight: 700; color: var(--color-text); line-height: 1.15; letter-spacing: -.02em; margin: 0; max-width: 66%; }
 .contact__desc { font-size: var(--text-base); color: var(--color-muted-light); line-height: 1.75; margin: 0; max-width: 42ch; }
 
 /* Contact info list */
@@ -397,7 +397,7 @@ body.menu-open { overflow: hidden; }
 .contact-modal__card { position: relative; z-index: 1; background: var(--color-cream); border-radius: var(--radius-card); padding: 2.5rem; width: 100%; max-width: 540px; max-height: 92vh; overflow-y: auto; transform: translateY(24px); transition: transform 0.35s cubic-bezier(0.34, 1.2, 0.64, 1); }
 .contact-modal.is-open .contact-modal__card { transform: translateY(0); }
 .contact-modal__header { display: flex; align-items: center; justify-content: space-between; margin-bottom: 2rem; }
-.contact-modal__title { font-family: var(--font-heading); font-size: var(--text-xl); font-weight: 600; color: var(--color-dark); margin: 0; }
+.contact-modal__title { font-family: var(--font-heading); font-size: var(--text-xl); font-weight: 600; color: var(--color-text); margin: 0; }
 .contact-modal__close { width: 2.25rem; height: 2.25rem; border-radius: 50%; background: rgba(31,31,31,.08); color: var(--color-text); display: flex; align-items: center; justify-content: center; transition: background var(--ease); flex-shrink: 0; }
 .contact-modal__close:hover { background: rgba(31,31,31,.14); }
 
