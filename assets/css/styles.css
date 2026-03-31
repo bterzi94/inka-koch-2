@@ -213,7 +213,7 @@ body.menu-open { overflow: hidden; }
 /* ── HERO ────────────────────────────────────────────────────────── */
 .hero { position: relative; display: flex; align-items: center; border-radius: var(--radius-section) var(--radius-section) 0 0; margin-top: calc(var(--z-sticky) * 1px + 1.5rem); overflow: hidden; margin-top: calc(68px + 1.5rem); }
 .hero__bg { position: absolute; inset: 0; background: url('../img/hero-bg.jpg') center/cover no-repeat; z-index: 0; }
-.hero__bg::after { content: ''; position: absolute; inset: 0; background: rgba(100,10,50,.72); }
+.hero__bg::after { content: ''; position: absolute; inset: 0; background: rgba(100,10,50,.90); }
 .hero__inner { position: relative; z-index: 1; width: 100%; max-width: var(--container-max); margin: 0 auto; padding: 1.5rem var(--container-pad-x); display: grid; grid-template-columns: 1fr 2fr; gap: 4rem; align-items: center; }
 .hero__text { display: flex; flex-direction: column; gap: .85rem; justify-content: center; }
 .hero__title { font-size: clamp(3rem, 6.5vw, 5.5rem); font-weight: 800; color: var(--color-cream); line-height: .95; letter-spacing: -.03em; margin: 0; }
