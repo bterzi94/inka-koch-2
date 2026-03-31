@@ -1,0 +1,683 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Style Guide — Design System</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../assets/css/styles.css">
+  <style>
+    /* ── Style Guide specific styles ── */
+    body { padding-top: 0; }
+
+    /* Sidebar nav */
+    .sg-layout { display: flex; min-height: 100vh; }
+    .sg-sidebar {
+      width: 220px; flex-shrink: 0;
+      background: var(--color-dark);
+      padding: 2rem 1.5rem;
+      position: sticky; top: 0; height: 100vh; overflow-y: auto;
+    }
+    .sg-sidebar h1 {
+      font-family: var(--font-heading); font-size: 1.1rem; font-weight: 700;
+      color: var(--color-cream); margin-bottom: .3rem; line-height: 1.2;
+    }
+    .sg-sidebar p { font-size: .72rem; color: var(--color-muted-dark); margin-bottom: 2rem; line-height: 1.5; }
+    .sg-sidebar nav ul { display: flex; flex-direction: column; gap: .2rem; }
+    .sg-sidebar nav a {
+      display: block; font-size: .8rem; color: rgba(255,252,245,.5);
+      padding: .4rem .6rem; border-radius: var(--radius-sm);
+      transition: color var(--ease), background var(--ease);
+    }
+    .sg-sidebar nav a:hover { color: var(--color-cream); background: rgba(255,252,245,.06); }
+    .sg-sidebar nav .sg-nav-group { font-size: .65rem; font-weight: 600; letter-spacing: .14em; text-transform: uppercase; color: rgba(255,252,245,.2); margin: 1.2rem 0 .4rem .6rem; }
+    .sg-sidebar .sg-version { margin-top: 2rem; font-size: .68rem; color: rgba(255,252,245,.2); padding: .4rem .6rem; }
+
+    /* Main content */
+    .sg-main { flex: 1; min-width: 0; padding: 3rem clamp(2rem, 5vw, 4rem) 6rem; }
+    .sg-section { margin-bottom: 5rem; scroll-margin-top: 2rem; }
+    .sg-section-title {
+      font-family: var(--font-heading); font-size: 1.6rem; font-weight: 700;
+      margin-bottom: .5rem; padding-bottom: 1rem;
+      border-bottom: 1px solid var(--color-border-light);
+    }
+    .sg-section-desc { color: var(--color-muted-light); font-size: .9rem; margin-bottom: 2rem; max-width: 60ch; line-height: 1.7; }
+
+    /* Token row */
+    .sg-token-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); gap: 1rem; }
+    .sg-token {
+      border: 1px solid var(--color-border-light);
+      border-radius: var(--radius-card); overflow: hidden;
+    }
+    .sg-token-swatch { height: 72px; }
+    .sg-token-info { padding: .75rem; }
+    .sg-token-name { font-size: .78rem; font-weight: 600; margin-bottom: .2rem; }
+    .sg-token-value { font-size: .72rem; color: var(--color-muted-light); font-family: 'Courier New', monospace; }
+    .sg-token-var   { font-size: .68rem; color: var(--color-accent); font-family: 'Courier New', monospace; margin-top: .15rem; }
+
+    /* Editable accent */
+    .accent-editor { display: flex; align-items: center; gap: 1rem; margin-bottom: 2rem; flex-wrap: wrap; }
+    .accent-editor label { font-size: .85rem; font-weight: 500; }
+    .accent-editor input[type="color"] { width: 48px; height: 36px; border: 2px solid var(--color-border-light); border-radius: var(--radius-md); cursor: pointer; padding: 2px; background: none; }
+    .accent-editor code { font-size: .8rem; background: var(--color-border-light); padding: .2rem .5rem; border-radius: 4px; font-family: monospace; }
+    .accent-editor .btn { font-size: .8rem; padding: .5rem 1rem; }
+
+    /* Type scale */
+    .sg-type-row { display: flex; align-items: baseline; gap: 1.5rem; padding: 1rem 0; border-bottom: 1px solid var(--color-border-light); }
+    .sg-type-label { font-size: .72rem; color: var(--color-muted-light); font-family: monospace; min-width: 120px; flex-shrink: 0; }
+    .sg-type-sample { line-height: 1.2; }
+
+    /* Spacing scale */
+    .sg-space-row { display: flex; align-items: center; gap: 1rem; padding: .6rem 0; border-bottom: 1px solid var(--color-border-light); }
+    .sg-space-bar { background: var(--color-accent); height: 8px; border-radius: 4px; opacity: .7; flex-shrink: 0; }
+    .sg-space-label { font-size: .78rem; color: var(--color-muted-light); font-family: monospace; min-width: 80px; }
+    .sg-space-px    { font-size: .78rem; color: var(--color-dark); }
+
+    /* Radius */
+    .sg-radius-grid { display: flex; flex-wrap: wrap; gap: 1.5rem; }
+    .sg-radius-item { text-align: center; }
+    .sg-radius-box { width: 80px; height: 80px; background: var(--color-dark); margin-bottom: .5rem; }
+    .sg-radius-label { font-size: .72rem; color: var(--color-muted-light); font-family: monospace; }
+
+    /* Shadow */
+    .sg-shadow-grid { display: flex; flex-wrap: wrap; gap: 2rem; }
+    .sg-shadow-item { text-align: center; }
+    .sg-shadow-box { width: 100px; height: 60px; background: var(--color-cream); border: 1px solid var(--color-border-light); border-radius: var(--radius-card); margin-bottom: .5rem; }
+    .sg-shadow-label { font-size: .72rem; color: var(--color-muted-light); font-family: monospace; }
+
+    /* Button grid */
+    .sg-btn-group { display: flex; flex-wrap: wrap; gap: 1rem; align-items: center; padding: 1.5rem; border-radius: var(--radius-card); margin-bottom: 1rem; }
+    .sg-btn-group.on-dark  { background: var(--color-dark); }
+    .sg-btn-group.on-cream { background: var(--color-cream); border: 1px solid var(--color-border-light); }
+    .sg-btn-group-label { font-size: .7rem; color: var(--color-muted-light); margin-bottom: .75rem; font-weight: 600; letter-spacing: .1em; text-transform: uppercase; }
+
+    /* Section pattern preview */
+    .sg-pattern-preview { border-radius: var(--radius-card); overflow: hidden; margin-bottom: 1.5rem; border: 1px solid var(--color-border-light); }
+    .sg-pattern-cream { background: var(--color-cream); padding: 2rem; }
+    .sg-pattern-dark  { background: var(--color-dark);  padding: 2rem; }
+    .sg-pattern-label { font-size: .72rem; font-family: monospace; color: var(--color-muted-light); }
+    .sg-pattern-cream .sg-pattern-label { color: var(--color-muted-light); }
+    .sg-pattern-dark  .sg-pattern-label { color: var(--color-muted-dark); }
+    .sg-pattern-content { height: 60px; display: flex; align-items: center; }
+    .sg-pattern-content h3 { color: var(--color-cream); font-size: 1.1rem; }
+
+    /* Card demo */
+    .sg-card-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(260px, 1fr)); gap: 1.5rem; }
+
+    /* Form demo */
+    .sg-form-demo { max-width: 480px; }
+
+    /* Navigation demo */
+    .sg-nav-demo {
+      background: var(--color-dark); border-radius: var(--radius-card);
+      padding: 1rem 1.5rem; display: flex; align-items: center;
+      justify-content: space-between; margin-bottom: 1rem;
+    }
+    .sg-nav-demo .demo-logo { font-family: var(--font-heading); font-size: 1rem; font-weight: 700; color: var(--color-cream); }
+    .sg-nav-demo .demo-links { display: flex; gap: 1.5rem; }
+    .sg-nav-demo .demo-links a { font-size: .8rem; color: rgba(255,252,245,.6); }
+
+    /* Code snippet */
+    .sg-code {
+      background: #0f0f0f; color: #e1e4e8;
+      border-radius: var(--radius-md); padding: 1.25rem 1.5rem;
+      font-family: 'Courier New', monospace; font-size: .8rem;
+      line-height: 1.7; overflow-x: auto; margin-top: 1rem;
+    }
+    .sg-code .token-var  { color: #79b8ff; }
+    .sg-code .token-val  { color: #9ecbff; }
+    .sg-code .token-comm { color: #6a737d; }
+
+    /* Z-Index table */
+    .sg-table { width: 100%; border-collapse: collapse; font-size: .85rem; }
+    .sg-table th { text-align: left; padding: .6rem .75rem; background: var(--color-dark); color: var(--color-cream); font-size: .72rem; letter-spacing: .1em; text-transform: uppercase; font-weight: 600; }
+    .sg-table td { padding: .65rem .75rem; border-bottom: 1px solid var(--color-border-light); }
+    .sg-table td:first-child { font-family: monospace; color: var(--color-accent); font-size: .8rem; }
+    .sg-table tr:last-child td { border-bottom: none; }
+
+    /* Edit notice */
+    .sg-edit-banner {
+      background: var(--color-accent); color: var(--color-cream);
+      padding: .75rem var(--container-pad-x); font-size: .82rem;
+      display: flex; align-items: center; gap: .75rem;
+    }
+    .sg-edit-banner a { color: var(--color-cream); text-decoration: underline; }
+
+    @media (max-width: 768px) {
+      .sg-layout { flex-direction: column; }
+      .sg-sidebar { width: 100%; height: auto; position: relative; }
+      .sg-sidebar nav ul { flex-direction: row; flex-wrap: wrap; }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="sg-edit-banner" role="note">
+    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><circle cx="12" cy="12" r="10"/><path d="M12 8v4M12 16h.01"/></svg>
+    Diese Seite ist der <strong>lebendige Style Guide</strong> für dieses Projekt.
+    Alle Tokens in <a href="../assets/css/styles.css"><code>assets/css/styles.css</code></a> werden hier dokumentiert und sind die Basis für alle Seiten.
+  </div>
+
+  <div class="sg-layout">
+
+    <!-- ── SIDEBAR ── -->
+    <aside class="sg-sidebar" aria-label="Style Guide Navigation">
+      <h1>Design<br>System</h1>
+      <p>Extrahiert von somervilles.co.uk</p>
+      <nav aria-label="Sektionen">
+        <ul>
+          <li><span class="sg-nav-group">Grundlagen</span></li>
+          <li><a href="#colors">Farben</a></li>
+          <li><a href="#typography">Typografie</a></li>
+          <li><a href="#spacing">Abstände</a></li>
+          <li><a href="#radius">Radius</a></li>
+          <li><a href="#shadows">Schatten</a></li>
+          <li><a href="#transitions">Übergänge</a></li>
+          <li><a href="#zindex">Z-Index</a></li>
+          <li><span class="sg-nav-group">Komponenten</span></li>
+          <li><a href="#buttons">Buttons</a></li>
+          <li><a href="#cards">Cards</a></li>
+          <li><a href="#navigation">Navigation</a></li>
+          <li><a href="#forms">Formulare</a></li>
+          <li><span class="sg-nav-group">Layout</span></li>
+          <li><a href="#layout">Container & Grid</a></li>
+          <li><a href="#sections">Section-Muster</a></li>
+        </ul>
+      </nav>
+      <a href="components.html" style="display:block;margin-top:1.5rem;padding:.5rem .8rem;border-radius:var(--radius-sm);font-size:.72rem;font-weight:600;letter-spacing:.1em;text-transform:uppercase;color:var(--color-accent);border:1px solid rgba(227,25,54,.3);text-align:center;transition:all var(--ease);" onmouseover="this.style.background='rgba(227,25,54,.1)'" onmouseout="this.style.background=''">UI-Bibliothek →</a>
+      <div class="sg-version">v1.0 · 2026</div>
+    </aside>
+
+    <!-- ── MAIN ── -->
+    <main class="sg-main" id="main-content">
+
+      <!-- HERO -->
+      <div style="margin-bottom:4rem;">
+        <p class="label" style="margin-bottom:.75rem;">Somerville Design System</p>
+        <h1 style="font-size:clamp(2rem,4vw,3rem);line-height:1.1;margin-bottom:1rem;">Style Guide</h1>
+        <p style="color:var(--color-muted-light);max-width:55ch;line-height:1.75;">
+          Alle Designentscheidungen an einem Ort. Extrahiert aus den Screenshots und dem Quellcode von somervilles.co.uk.
+          Dieser Guide ist die <strong>einzige Quelle der Wahrheit</strong> für alle Seiten, Komponenten und Layouts in diesem Projekt.
+        </p>
+      </div>
+
+      <!-- ════════════════════════ COLORS ════════════════════════ -->
+      <section class="sg-section" id="colors">
+        <h2 class="sg-section-title">Farben</h2>
+        <p class="sg-section-desc">
+          Das Farbsystem basiert auf zwei Kernfarben (Cream + Dark) und einer Akzentfarbe.
+          Die Akzentfarbe kann pro Projekt angepasst werden — sie beeinflusst automatisch alle Buttons, Labels und Highlights.
+        </p>
+
+        <!-- Accent Editor -->
+        <div class="accent-editor">
+          <label for="accent-picker">Akzentfarbe anpassen:</label>
+          <input type="color" id="accent-picker" value="#E31936" title="Akzentfarbe wählen">
+          <code id="accent-hex">#E31936</code>
+          <button class="btn btn--dark" onclick="copyAccentCSS()" style="padding:.5rem 1rem;font-size:.78rem;">CSS Variable kopieren</button>
+          <button class="btn btn--accent" onclick="resetAccent()" style="padding:.5rem 1rem;font-size:.78rem;">Zurücksetzen</button>
+        </div>
+
+        <div class="sg-token-grid">
+          <div class="sg-token">
+            <div class="sg-token-swatch" style="background:#FFFCF5;border-bottom:1px solid #eee;"></div>
+            <div class="sg-token-info">
+              <div class="sg-token-name">Cream</div>
+              <div class="sg-token-value">#FFFCF5</div>
+              <div class="sg-token-var">--color-cream</div>
+            </div>
+          </div>
+          <div class="sg-token">
+            <div class="sg-token-swatch" style="background:#1C1C1C;"></div>
+            <div class="sg-token-info">
+              <div class="sg-token-name">Dark</div>
+              <div class="sg-token-value">#1C1C1C</div>
+              <div class="sg-token-var">--color-dark</div>
+            </div>
+          </div>
+          <div class="sg-token" id="accent-token">
+            <div class="sg-token-swatch" id="accent-swatch" style="background:#E31936;"></div>
+            <div class="sg-token-info">
+              <div class="sg-token-name">Akzent</div>
+              <div class="sg-token-value" id="accent-token-val">#E31936</div>
+              <div class="sg-token-var">--color-accent</div>
+            </div>
+          </div>
+          <div class="sg-token">
+            <div class="sg-token-swatch" style="background:#888888;"></div>
+            <div class="sg-token-info">
+              <div class="sg-token-name">Muted Light</div>
+              <div class="sg-token-value">#888888</div>
+              <div class="sg-token-var">--color-muted-light</div>
+            </div>
+          </div>
+          <div class="sg-token">
+            <div class="sg-token-swatch" style="background:#AAAAAA;"></div>
+            <div class="sg-token-info">
+              <div class="sg-token-name">Muted Dark</div>
+              <div class="sg-token-value">#AAAAAA</div>
+              <div class="sg-token-var">--color-muted-dark</div>
+            </div>
+          </div>
+          <div class="sg-token">
+            <div class="sg-token-swatch" style="background:rgba(28,28,28,.09);border-bottom:1px solid #eee;"></div>
+            <div class="sg-token-info">
+              <div class="sg-token-name">Border Light</div>
+              <div class="sg-token-value">rgba(28,28,28,.09)</div>
+              <div class="sg-token-var">--color-border-light</div>
+            </div>
+          </div>
+          <div class="sg-token">
+            <div class="sg-token-swatch" style="background:#333;"></div>
+            <div class="sg-token-info">
+              <div class="sg-token-name">Border Dark</div>
+              <div class="sg-token-value">rgba(255,252,245,.1)</div>
+              <div class="sg-token-var">--color-border-dark</div>
+            </div>
+          </div>
+        </div>
+
+        <pre class="sg-code"><span class="token-comm">/* In styles.css überschreiben: */</span>
+<span class="token-var">:root</span> {
+  <span class="token-var">--color-accent</span>: <span class="token-val" id="code-accent-val">#E31936</span>;
+}</pre>
+      </section>
+
+      <!-- ════════════════════════ TYPOGRAPHY ════════════════════════ -->
+      <section class="sg-section" id="typography">
+        <h2 class="sg-section-title">Typografie</h2>
+        <p class="sg-section-desc">
+          <strong>Playfair Display</strong> für alle Überschriften (h1–h4) — elegant, serif, hochwertig.<br>
+          <strong>Inter</strong> für Fließtext, Labels, Buttons — klar, lesbar, neutral.<br>
+          Mindestgröße Body: 16px (verhindert Auto-Zoom auf iOS).
+        </p>
+
+        <div style="margin-bottom:2rem;">
+          <div class="sg-type-row">
+            <span class="sg-type-label">--text-4xl · 4rem</span>
+            <span class="sg-type-sample" style="font-family:var(--font-heading);font-size:var(--text-4xl);font-weight:700;line-height:1;">Aa</span>
+          </div>
+          <div class="sg-type-row">
+            <span class="sg-type-label">--text-3xl · 3rem</span>
+            <span class="sg-type-sample" style="font-family:var(--font-heading);font-size:var(--text-3xl);font-weight:700;">Heading 1</span>
+          </div>
+          <div class="sg-type-row">
+            <span class="sg-type-label">--text-2xl · 2.25rem</span>
+            <span class="sg-type-sample" style="font-family:var(--font-heading);font-size:var(--text-2xl);font-weight:700;">Heading 2</span>
+          </div>
+          <div class="sg-type-row">
+            <span class="sg-type-label">--text-xl · 1.75rem</span>
+            <span class="sg-type-sample" style="font-family:var(--font-heading);font-size:var(--text-xl);font-weight:500;">Heading 3</span>
+          </div>
+          <div class="sg-type-row">
+            <span class="sg-type-label">--text-lg · 1.375rem</span>
+            <span class="sg-type-sample" style="font-family:var(--font-heading);font-size:var(--text-lg);font-weight:500;">Subheading</span>
+          </div>
+          <div class="sg-type-row">
+            <span class="sg-type-label">--text-md · 1.125rem</span>
+            <span class="sg-type-sample" style="font-size:var(--text-md);">Large body text</span>
+          </div>
+          <div class="sg-type-row">
+            <span class="sg-type-label">--text-base · 1rem</span>
+            <span class="sg-type-sample" style="font-size:var(--text-base);">Body text — Standard Fließtext in Inter Regular</span>
+          </div>
+          <div class="sg-type-row">
+            <span class="sg-type-label">--text-sm · 0.875rem</span>
+            <span class="sg-type-sample" style="font-size:var(--text-sm);">Small text — Buttons, Captions, Nav Links</span>
+          </div>
+          <div class="sg-type-row">
+            <span class="sg-type-label">--text-xs · 0.72rem</span>
+            <span class="sg-type-sample" style="font-size:var(--text-xs);letter-spacing:.14em;text-transform:uppercase;font-weight:600;">LABEL / UPPERCASE TAG</span>
+          </div>
+          <div class="sg-type-row">
+            <span class="sg-type-label">Italic serif</span>
+            <span class="sg-type-sample" style="font-family:var(--font-heading);font-size:var(--text-2xl);font-style:italic;">Crafting interiors</span>
+          </div>
+        </div>
+      </section>
+
+      <!-- ════════════════════════ SPACING ════════════════════════ -->
+      <section class="sg-section" id="spacing">
+        <h2 class="sg-section-title">Abstände — 8pt Grid</h2>
+        <p class="sg-section-desc">Alle Abstände folgen dem 8pt-Grid. Verwende ausschließlich diese Tokens in allen Komponenten.</p>
+
+        <div>
+          <div class="sg-space-row"><span class="sg-space-label">--space-1</span><div class="sg-space-bar" style="width:4px;"></div><span class="sg-space-px">4px · 0.25rem</span></div>
+          <div class="sg-space-row"><span class="sg-space-label">--space-2</span><div class="sg-space-bar" style="width:8px;"></div><span class="sg-space-px">8px · 0.5rem</span></div>
+          <div class="sg-space-row"><span class="sg-space-label">--space-3</span><div class="sg-space-bar" style="width:12px;"></div><span class="sg-space-px">12px · 0.75rem</span></div>
+          <div class="sg-space-row"><span class="sg-space-label">--space-4</span><div class="sg-space-bar" style="width:16px;"></div><span class="sg-space-px">16px · 1rem</span></div>
+          <div class="sg-space-row"><span class="sg-space-label">--space-6</span><div class="sg-space-bar" style="width:24px;"></div><span class="sg-space-px">24px · 1.5rem</span></div>
+          <div class="sg-space-row"><span class="sg-space-label">--space-8</span><div class="sg-space-bar" style="width:32px;"></div><span class="sg-space-px">32px · 2rem</span></div>
+          <div class="sg-space-row"><span class="sg-space-label">--space-10</span><div class="sg-space-bar" style="width:40px;"></div><span class="sg-space-px">40px · 2.5rem</span></div>
+          <div class="sg-space-row"><span class="sg-space-label">--space-12</span><div class="sg-space-bar" style="width:48px;"></div><span class="sg-space-px">48px · 3rem</span></div>
+          <div class="sg-space-row"><span class="sg-space-label">--space-16</span><div class="sg-space-bar" style="width:64px;"></div><span class="sg-space-px">64px · 4rem</span></div>
+          <div class="sg-space-row"><span class="sg-space-label">--space-24</span><div class="sg-space-bar" style="width:96px;"></div><span class="sg-space-px">96px · 6rem</span></div>
+          <div class="sg-space-row"><span class="sg-space-label">--space-32</span><div class="sg-space-bar" style="width:128px;"></div><span class="sg-space-px">128px · 8rem</span></div>
+          <div class="sg-space-row"><span class="sg-space-label">--section-pad-y</span><div class="sg-space-bar" style="width:90px;opacity:.4;"></div><span class="sg-space-px">clamp(70px, 9vw, 120px) — Sektions-Padding</span></div>
+          <div class="sg-space-row"><span class="sg-space-label">--container-pad-x</span><div class="sg-space-bar" style="width:72px;opacity:.4;"></div><span class="sg-space-px">clamp(1.5rem, 5.5vw, 5rem) — Container Seiten-Padding</span></div>
+        </div>
+      </section>
+
+      <!-- ════════════════════════ RADIUS ════════════════════════ -->
+      <section class="sg-section" id="radius">
+        <h2 class="sg-section-title">Border Radius</h2>
+        <p class="sg-section-desc">Das Radius-System hat 5 Stufen. Die Section-Radius (28px) ist das prägende Merkmal des Somerville-Layouts.</p>
+
+        <div class="sg-radius-grid">
+          <div class="sg-radius-item">
+            <div class="sg-radius-box" style="border-radius:var(--radius-sm);"></div>
+            <div class="sg-radius-label">--radius-sm<br>6px</div>
+          </div>
+          <div class="sg-radius-item">
+            <div class="sg-radius-box" style="border-radius:var(--radius-md);"></div>
+            <div class="sg-radius-label">--radius-md<br>10px · Inputs</div>
+          </div>
+          <div class="sg-radius-item">
+            <div class="sg-radius-box" style="border-radius:var(--radius-card);"></div>
+            <div class="sg-radius-label">--radius-card<br>16px · Cards</div>
+          </div>
+          <div class="sg-radius-item">
+            <div class="sg-radius-box" style="border-radius:var(--radius-section);"></div>
+            <div class="sg-radius-label">--radius-section<br>28px · Sektionen</div>
+          </div>
+          <div class="sg-radius-item">
+            <div class="sg-radius-box" style="border-radius:var(--radius-pill);width:120px;height:48px;"></div>
+            <div class="sg-radius-label">--radius-pill<br>100px · Buttons</div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ════════════════════════ SHADOWS ════════════════════════ -->
+      <section class="sg-section" id="shadows">
+        <h2 class="sg-section-title">Schatten</h2>
+        <p class="sg-section-desc">Schatten werden sparsam eingesetzt — primär für Cards auf hellem Hintergrund.</p>
+
+        <div class="sg-shadow-grid">
+          <div class="sg-shadow-item">
+            <div class="sg-shadow-box" style="box-shadow:var(--shadow-sm);"></div>
+            <div class="sg-shadow-label">--shadow-sm</div>
+          </div>
+          <div class="sg-shadow-item">
+            <div class="sg-shadow-box" style="box-shadow:var(--shadow-md);"></div>
+            <div class="sg-shadow-label">--shadow-md</div>
+          </div>
+          <div class="sg-shadow-item">
+            <div class="sg-shadow-box" style="box-shadow:var(--shadow-lg);"></div>
+            <div class="sg-shadow-label">--shadow-lg</div>
+          </div>
+          <div class="sg-shadow-item">
+            <div class="sg-shadow-box" style="box-shadow:var(--shadow-xl);"></div>
+            <div class="sg-shadow-label">--shadow-xl</div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ════════════════════════ TRANSITIONS ════════════════════════ -->
+      <section class="sg-section" id="transitions">
+        <h2 class="sg-section-title">Übergänge & Animationen</h2>
+        <p class="sg-section-desc">Alle Animationen folgen ui-ux-pro-max: 150–300ms, ease-out für Eintritte, ease-in für Austritte. Immer <code>prefers-reduced-motion</code> respektieren.</p>
+
+        <table class="sg-table">
+          <thead><tr><th>Token</th><th>Wert</th><th>Verwendung</th></tr></thead>
+          <tbody>
+            <tr><td>--ease-fast</td><td>0.15s ease</td><td>Hover-States, Button-Feedback</td></tr>
+            <tr><td>--ease</td><td>0.28s ease</td><td>Standard — Farben, Borders, Opacity</td></tr>
+            <tr><td>--ease-slow</td><td>0.5s ease</td><td>Drawer, Mobile Menu, Page Transitions</td></tr>
+            <tr><td>Reveal Animation</td><td>0.6s ease</td><td>Scroll-triggered Einblendungen</td></tr>
+            <tr><td>Hover translate</td><td>translateY(-1px)</td><td>Buttons beim Hover</td></tr>
+            <tr><td>Arrow translate</td><td>translateX(4px)</td><td>Button-Pfeile beim Hover</td></tr>
+          </tbody>
+        </table>
+      </section>
+
+      <!-- ════════════════════════ Z-INDEX ════════════════════════ -->
+      <section class="sg-section" id="zindex">
+        <h2 class="sg-section-title">Z-Index Skala</h2>
+        <p class="sg-section-desc">Immer diese Tokens verwenden — niemals rohe Zahlen in Komponenten.</p>
+
+        <table class="sg-table">
+          <thead><tr><th>Token</th><th>Wert</th><th>Verwendung</th></tr></thead>
+          <tbody>
+            <tr><td>--z-base</td><td>0</td><td>Normaler Dokumentfluss</td></tr>
+            <tr><td>--z-raised</td><td>10</td><td>Leicht angehobene Elemente (Cards mit Hover)</td></tr>
+            <tr><td>--z-dropdown</td><td>40</td><td>Dropdowns, Tooltips</td></tr>
+            <tr><td>--z-sticky</td><td>80</td><td>Sticky Header / Navigation</td></tr>
+            <tr><td>--z-overlay</td><td>90</td><td>Floating CTA, Overlays</td></tr>
+            <tr><td>--z-modal</td><td>100</td><td>Modals, Dialoge</td></tr>
+            <tr><td>--z-toast</td><td>200</td><td>Toast-Nachrichten, Skip-Links</td></tr>
+          </tbody>
+        </table>
+      </section>
+
+      <!-- ════════════════════════ BUTTONS ════════════════════════ -->
+      <section class="sg-section" id="buttons">
+        <h2 class="sg-section-title">Buttons</h2>
+        <p class="sg-section-desc">3 Varianten. Pill-Form (border-radius: 100px). Arrow-Element für CTA-Buttons. Mindest-Touch-Target: 44×44px.</p>
+
+        <p class="sg-btn-group-label">Auf dunklem Hintergrund</p>
+        <div class="sg-btn-group on-dark">
+          <a class="btn btn--dark">btn--dark <span class="btn__arrow">→</span></a>
+          <a class="btn btn--light">btn--light <span class="btn__arrow">→</span></a>
+          <a class="btn btn--accent">btn--accent <span class="btn__arrow">→</span></a>
+        </div>
+        <p class="sg-btn-group-label">Auf hellem Hintergrund</p>
+        <div class="sg-btn-group on-cream">
+          <a class="btn btn--dark">btn--dark <span class="btn__arrow">→</span></a>
+          <a class="btn btn--accent">btn--accent <span class="btn__arrow">→</span></a>
+        </div>
+
+        <pre class="sg-code"><span class="token-comm">&lt;!-- Verwendung --&gt;</span>
+&lt;a class="btn btn--dark"&gt;Text &lt;span class="btn__arrow"&gt;→&lt;/span&gt;&lt;/a&gt;
+&lt;a class="btn btn--light"&gt;Text &lt;span class="btn__arrow"&gt;→&lt;/span&gt;&lt;/a&gt;
+&lt;a class="btn btn--accent"&gt;Text &lt;span class="btn__arrow"&gt;→&lt;/span&gt;&lt;/a&gt;</pre>
+      </section>
+
+      <!-- ════════════════════════ CARDS ════════════════════════ -->
+      <section class="sg-section" id="cards">
+        <h2 class="sg-section-title">Cards</h2>
+        <p class="sg-section-desc">Zwei Varianten: auf dunklem und auf hellem Hintergrund. Das Somerville <strong>Plus-Icon</strong> (weißer Kreis mit rotem Plus) wird auf Card-Bildern verwendet.</p>
+
+        <p class="sg-btn-group-label">card--dark (auf dunklem Bg)</p>
+        <div style="background:var(--color-dark);padding:2rem;border-radius:var(--radius-card);margin-bottom:1.5rem;">
+          <div class="sg-card-grid">
+            <div class="card card--dark" style="padding:1.5rem;">
+              <div style="width:40px;height:40px;border-radius:50%;background:var(--color-accent);margin-bottom:1rem;"></div>
+              <h4 style="color:var(--color-cream);margin-bottom:.5rem;">Card Titel</h4>
+              <p style="color:var(--color-muted-dark);font-size:.875rem;">Beschreibung des Inhalts. Hover zeigt Border-Highlight.</p>
+            </div>
+            <div class="card card--dark" style="padding:1.5rem;">
+              <div style="aspect-ratio:3/2;background:#2a2a2a;border-radius:var(--radius-md);margin-bottom:1rem;position:relative;overflow:hidden;">
+                <div style="position:absolute;bottom:.75rem;right:.75rem;width:36px;height:36px;border-radius:50%;background:white;display:flex;align-items:center;justify-content:center;">
+                  <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M7 2v10M2 7h10" stroke="#E31936" stroke-width="2" stroke-linecap="round"/></svg>
+                </div>
+              </div>
+              <h4 style="color:var(--color-cream);margin-bottom:.5rem;">Mit Bild & Plus-Icon</h4>
+              <p style="color:var(--color-muted-dark);font-size:.875rem;">Somerville-Muster für Projekt- und Service-Cards.</p>
+            </div>
+          </div>
+        </div>
+
+        <p class="sg-btn-group-label">card--light (auf hellem Bg)</p>
+        <div class="sg-card-grid">
+          <div class="card card--light" style="padding:1.5rem;">
+            <h4 style="margin-bottom:.5rem;">Card Titel</h4>
+            <p style="color:var(--color-muted-light);font-size:.875rem;">Hover hebt die Card leicht an und verstärkt den Schatten.</p>
+          </div>
+          <div class="card card--light" style="padding:1.5rem;">
+            <h4 style="margin-bottom:.5rem;">Card Titel</h4>
+            <p style="color:var(--color-muted-light);font-size:.875rem;">Hover hebt die Card leicht an und verstärkt den Schatten.</p>
+          </div>
+        </div>
+      </section>
+
+      <!-- ════════════════════════ NAVIGATION ════════════════════════ -->
+      <section class="sg-section" id="navigation">
+        <h2 class="sg-section-title">Navigation</h2>
+        <p class="sg-section-desc">Somerville-Muster: <strong>Hamburger links — Logo Mitte — CTA rechts</strong>. Transparent auf Hero, dunkel nach Scroll (`.is-scrolled`). Flyout-Menü auf Desktop, Drawer auf Mobile.</p>
+
+        <div class="sg-nav-demo">
+          <div style="display:flex;flex-direction:column;gap:5px;width:22px;cursor:pointer;">
+            <span style="display:block;height:1.5px;background:var(--color-cream);border-radius:2px;"></span>
+            <span style="display:block;height:1.5px;background:var(--color-cream);border-radius:2px;"></span>
+            <span style="display:block;height:1.5px;background:var(--color-cream);border-radius:2px;"></span>
+          </div>
+          <span class="demo-logo">Projektname</span>
+          <a class="btn btn--dark" style="font-size:.78rem;padding:.6rem 1.2rem;">CTA Button →</a>
+        </div>
+
+        <table class="sg-table">
+          <thead><tr><th>Zustand</th><th>Verhalten</th></tr></thead>
+          <tbody>
+            <tr><td>Standard</td><td>Transparent, overlay über Hero</td></tr>
+            <tr><td>.is-scrolled</td><td>background: #1C1C1C, padding reduziert, box-shadow</td></tr>
+            <tr><td>Mobile (&lt;900px)</td><td>Nav-Links ausgeblendet, Hamburger sichtbar</td></tr>
+            <tr><td>Drawer open</td><td>Vollbild dunkel, große Playfair-Links, body overflow: hidden</td></tr>
+          </tbody>
+        </table>
+      </section>
+
+      <!-- ════════════════════════ FORMS ════════════════════════ -->
+      <section class="sg-section" id="forms">
+        <h2 class="sg-section-title">Formulare</h2>
+        <p class="sg-section-desc">Formulare werden auf dunklem Hintergrund (Card) platziert. Labels in Uppercase, Inputs mit subtiler transparenter Füllung, Fokus-State mit Akzentfarbe.</p>
+
+        <div class="sg-form-demo">
+          <div class="form-dark">
+            <div class="field">
+              <label for="demo-name">Vorname *</label>
+              <input type="text" id="demo-name" placeholder="Maria">
+            </div>
+            <div class="field">
+              <label for="demo-email">E-Mail *</label>
+              <input type="email" id="demo-email" placeholder="maria@beispiel.de">
+            </div>
+            <div class="field">
+              <label for="demo-msg">Nachricht</label>
+              <textarea id="demo-msg" placeholder="Deine Nachricht…" style="min-height:80px;"></textarea>
+            </div>
+            <a class="btn btn--accent" style="width:100%;justify-content:center;margin-top:.5rem;">
+              Absenden <span class="btn__arrow">→</span>
+            </a>
+          </div>
+        </div>
+      </section>
+
+      <!-- ════════════════════════ LAYOUT ════════════════════════ -->
+      <section class="sg-section" id="layout">
+        <h2 class="sg-section-title">Container & Layout</h2>
+        <p class="sg-section-desc">Ein einzelner Container-Typ, zentriert mit großzügigem Seiten-Padding. Das Padding ist responsiv und gibt auf großen Bildschirmen genug Luft (Somerville-Feeling).</p>
+
+        <table class="sg-table">
+          <thead><tr><th>Token / Klasse</th><th>Wert</th><th>Beschreibung</th></tr></thead>
+          <tbody>
+            <tr><td>.container</td><td>max-width: 1240px</td><td>Zentrierter Content-Bereich</td></tr>
+            <tr><td>--container-pad-x</td><td>clamp(1.5rem, 5.5vw, 5rem)</td><td>Außen-Padding links/rechts</td></tr>
+            <tr><td>--section-pad-y</td><td>clamp(70px, 9vw, 120px)</td><td>Vertikal-Padding jeder Section</td></tr>
+            <tr><td>Breakpoints</td><td>375 / 640 / 768 / 1024 / 1440px</td><td>Mobile-first</td></tr>
+          </tbody>
+        </table>
+      </section>
+
+      <!-- ════════════════════════ SECTIONS ════════════════════════ -->
+      <section class="sg-section" id="sections">
+        <h2 class="sg-section-title">Section-Muster (Somerville-Layout)</h2>
+        <p class="sg-section-desc">
+          Das Kernmerkmal: Helle (cream) und dunkle Sektionen wechseln sich ab.
+          Dunkle Sektionen werden als „schwebende Cards" mit abgerundeten Ecken dargestellt.
+          Die Klassen <code>.section-rad-top</code> / <code>.section-rad-bottom</code> / <code>.section-rad-both</code> steuern die Rundung.
+        </p>
+
+        <div class="sg-pattern-preview">
+          <div class="sg-pattern-cream">
+            <div class="sg-pattern-label">.bg-cream — Normaler Hintergrund</div>
+            <div class="sg-pattern-content"><p>Heller Bereich — keine Rundung nötig</p></div>
+          </div>
+          <div class="sg-pattern-dark section-rad-top">
+            <div class="sg-pattern-label" style="color:var(--color-muted-dark);">.bg-dark .section-rad-top — Oben abgerundet</div>
+            <div class="sg-pattern-content"><h3>Dunkle Sektion oben abgerundet</h3></div>
+          </div>
+          <div class="sg-pattern-dark section-rad-bottom" style="border-radius:0 0 var(--radius-section) var(--radius-section);">
+            <div class="sg-pattern-label" style="color:var(--color-muted-dark);">.section-rad-bottom — Unten abgerundet</div>
+          </div>
+          <div class="sg-pattern-cream">
+            <div class="sg-pattern-label">Zurück zu cream</div>
+          </div>
+          <div class="sg-pattern-dark section-rad-both" style="margin:.5rem;">
+            <div class="sg-pattern-label" style="color:var(--color-muted-dark);">.section-rad-both — Alle Ecken (freistehende Card)</div>
+            <div class="sg-pattern-content"><h3>Freistehende dunkle Section-Card</h3></div>
+          </div>
+          <div class="sg-pattern-cream">
+            <div class="sg-pattern-label">Zurück zu cream</div>
+          </div>
+        </div>
+
+        <pre class="sg-code"><span class="token-comm">&lt;!-- Typische Seitenstruktur --&gt;</span>
+&lt;section class="bg-dark section-rad-bottom"&gt;Hero&lt;/section&gt;
+&lt;section class="bg-cream"&gt;Values&lt;/section&gt;
+&lt;section class="bg-dark section-rad-both"&gt;Courses&lt;/section&gt;
+&lt;section class="bg-cream section-rad-top"&gt;Benefits&lt;/section&gt;
+&lt;section class="bg-dark section-rad-both"&gt;Testimonials&lt;/section&gt;
+&lt;footer class="bg-dark section-rad-top"&gt;Footer&lt;/footer&gt;</pre>
+      </section>
+
+    </main>
+  </div>
+
+  <script>
+    // ── Accent color editor ──
+    const picker   = document.getElementById('accent-picker');
+    const hexCode  = document.getElementById('accent-hex');
+    const swatch   = document.getElementById('accent-swatch');
+    const tokenVal = document.getElementById('accent-token-val');
+    const codeVal  = document.getElementById('code-accent-val');
+    const root     = document.documentElement;
+
+    picker.addEventListener('input', e => {
+      const hex = e.target.value;
+      root.style.setProperty('--color-accent', hex);
+      hexCode.textContent  = hex;
+      swatch.style.background = hex;
+      tokenVal.textContent = hex;
+      codeVal.textContent  = hex;
+    });
+
+    function resetAccent() {
+      const def = '#E31936';
+      picker.value = def;
+      root.style.setProperty('--color-accent', def);
+      hexCode.textContent  = def;
+      swatch.style.background = def;
+      tokenVal.textContent = def;
+      codeVal.textContent  = def;
+    }
+
+    function copyAccentCSS() {
+      const hex = picker.value;
+      const css = `:root {\n  --color-accent: ${hex};\n}`;
+      navigator.clipboard.writeText(css).then(() => {
+        const btn = event.target;
+        const orig = btn.textContent;
+        btn.textContent = 'Kopiert ✓';
+        setTimeout(() => btn.textContent = orig, 1800);
+      });
+    }
+
+    // ── Sidebar active link on scroll ──
+    const sections = document.querySelectorAll('.sg-section');
+    const links    = document.querySelectorAll('.sg-sidebar nav a');
+    const io = new IntersectionObserver(entries => {
+      entries.forEach(e => {
+        if (e.isIntersecting) {
+          links.forEach(l => l.style.color = '');
+          const active = document.querySelector(`.sg-sidebar nav a[href="#${e.target.id}"]`);
+          if (active) active.style.color = 'var(--color-cream)';
+        }
+      });
+    }, { threshold: 0.4 });
+    sections.forEach(s => io.observe(s));
+  </script>
+
+</body>
+</html>

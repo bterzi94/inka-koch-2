@@ -1,0 +1,623 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Inka Koch – Finance Planning</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&family=Inter:wght@400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="assets/css/styles.css">
+</head>
+<body>
+
+  <header class="site-header" id="header">
+    <a href="/" class="site-header__logo">Inka Koch<span style="color:var(--color-accent)">.</span></a>
+    <nav class="site-header__nav" aria-label="Hauptnavigation">
+      <a href="#startseite">Startseite</a>
+      <a href="#kurse">Kursüberblick</a>
+      <a href="#paket">Alle Kurse</a>
+      <a href="#kundenstimmen">Kundenstimmen</a>
+      <a href="#kontakt">Kontakt</a>
+    </nav>
+    <button class="hamburger" id="hamburger" aria-label="Menü öffnen" aria-expanded="false">
+      <span class="hamburger__line"></span>
+      <span class="hamburger__line"></span>
+      <span class="hamburger__line"></span>
+    </button>
+  </header>
+
+  <!-- Mobile Menu -->
+  <div class="mobile-menu" id="mobileMenu" aria-hidden="true">
+    <button class="mobile-menu__close" id="menuClose" aria-label="Menü schließen">
+      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"><path d="M18 6 6 18M6 6l12 12"/></svg>
+    </button>
+    <nav class="mobile-menu__nav">
+      <a href="#startseite">Startseite</a>
+      <a href="#kurse">Kursüberblick</a>
+      <a href="#paket">Alle Kurse</a>
+      <a href="#kundenstimmen">Kundenstimmen</a>
+      <a href="#kontakt">Kontakt</a>
+    </nav>
+    <div class="mobile-menu__footer">
+      <a href="#kurse" class="btn btn--accent">
+        <span class="btn--accent__text">zum Webinar</span>
+        <span class="btn--accent__icon">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 7h10v10"/><path d="M7 17 17 7"/></svg>
+        </span>
+      </a>
+    </div>
+  </div>
+
+  <!-- ── HERO ───────────────────────────────────────────────── -->
+  <section class="hero" id="startseite">
+    <div class="hero__bg"></div>
+
+    <div class="hero__inner">
+      <div class="hero__text">
+        <h1 class="hero__title">
+          <span class="hero__title-name">Inka Koch</span>
+          Finance<br>Planning.
+        </h1>
+        <p class="hero__desc">
+          Werde finanziell und emotional unabhängig — und beginne, dein volles Potenzial zu leben. Mit einem einzigartigen Ansatz aus Finanzwissen und Coaching begleitet dich Inka Koch Schritt für Schritt raus aus Abhängigkeit — hin zu Selbstbestimmung, Selbstvertrauen und echter Freiheit.
+        </p>
+        <div class="hero__footer">
+          <div class="hero__rating">
+            <span class="hero__rating-pin">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7z"/><circle cx="12" cy="9" r="2.5"/></svg>
+            </span>
+            <span class="hero__rating-name">KennstDuEinen</span>
+            <span class="hero__stars">★★★★★</span>
+          </div>
+          <a href="#kurse" class="btn btn--accent">
+            <span class="btn--accent__text">zum Webinar</span>
+            <span class="btn--accent__icon">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 7h10v10"/><path d="M7 17 17 7"/></svg>
+            </span>
+          </a>
+        </div>
+      </div>
+
+      <div class="hero__collage">
+        <img src="assets/img/hero-collage.png" alt="Inka Koch – Finance Planning">
+      </div>
+    </div>
+  </section>
+
+  <!-- ── VALUE PROP ────────────────────────────────────────────── -->
+  <section class="value-prop">
+    <div class="value-prop__inner">
+      <div class="value-prop__line"></div>
+      <div class="value-prop__left">
+        <div class="value-prop__deco"></div>
+        <h2 class="value-prop__title">Emotionale Freiheit setzt finanzielle Unabhängigkeit voraus.</h2>
+        <a href="#kurse" class="btn btn--accent">
+          <span class="btn--accent__text">zum Webinar</span>
+          <span class="btn--accent__icon">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 7h10v10"/><path d="M7 17 17 7"/></svg>
+          </span>
+        </a>
+      </div>
+      <div class="value-prop__line"></div>
+      <div class="value-prop__right">
+        <div class="value-prop__video">
+          <iframe
+            src="https://www.youtube.com/embed/msAHY32lMSI"
+            title="Emotionale Freiheit setzt finanzielle Unabhängigkeit voraus"
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+            allowfullscreen>
+          </iframe>
+        </div>
+      </div>
+      <div class="value-prop__line"></div>
+    </div>
+  </section>
+
+  <!-- ── KURSÜBERBLICK ─────────────────────────────────────────── -->
+  <section class="courses" id="kurse">
+    <div class="courses__inner">
+
+      <div class="courses__header">
+        <div>
+          <span class="label">Kursüberblick</span>
+          <h2 class="courses__title">Was dich erwartet</h2>
+        </div>
+        <p class="courses__subtitle">11 Lektionen · Jederzeit abrufbar</p>
+      </div>
+
+      <ol class="course-list">
+
+        <li class="course-item">
+          <span class="course-item__num">01</span>
+          <span class="course-item__icon"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polygon points="10 8 16 12 10 16 10 8" fill="currentColor" stroke="none"/></svg></span>
+          <span class="course-item__title">Steuerseminar</span>
+          <a href="#" class="course-item__btn">zum Kurs <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor" stroke="none"><polygon points="5 3 19 12 5 21 5 3"/></svg></a>
+          <span class="course-item__duration">10:00</span>
+        </li>
+
+        <li class="course-item">
+          <span class="course-item__num">02</span>
+          <span class="course-item__icon"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polygon points="10 8 16 12 10 16 10 8" fill="currentColor" stroke="none"/></svg></span>
+          <span class="course-item__title">Altersversorgung Vergleichsrechner</span>
+          <a href="#" class="course-item__btn">zum Kurs <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor" stroke="none"><polygon points="5 3 19 12 5 21 5 3"/></svg></a>
+          <span class="course-item__duration">10:00</span>
+        </li>
+
+        <li class="course-item">
+          <span class="course-item__num">03</span>
+          <span class="course-item__icon"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polygon points="10 8 16 12 10 16 10 8" fill="currentColor" stroke="none"/></svg></span>
+          <span class="course-item__title">Liquiditätsmanagement</span>
+          <a href="#" class="course-item__btn">zum Kurs <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor" stroke="none"><polygon points="5 3 19 12 5 21 5 3"/></svg></a>
+          <span class="course-item__duration">10:00</span>
+        </li>
+
+        <li class="course-item">
+          <span class="course-item__num">04</span>
+          <span class="course-item__icon"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polygon points="10 8 16 12 10 16 10 8" fill="currentColor" stroke="none"/></svg></span>
+          <span class="course-item__title">Vermögensmanagement</span>
+          <a href="#" class="course-item__btn">zum Kurs <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor" stroke="none"><polygon points="5 3 19 12 5 21 5 3"/></svg></a>
+          <span class="course-item__duration">10:00</span>
+        </li>
+
+        <li class="course-item">
+          <span class="course-item__num">05</span>
+          <span class="course-item__icon"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polygon points="10 8 16 12 10 16 10 8" fill="currentColor" stroke="none"/></svg></span>
+          <span class="course-item__title">BU-Rente</span>
+          <a href="#" class="course-item__btn">zum Kurs <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor" stroke="none"><polygon points="5 3 19 12 5 21 5 3"/></svg></a>
+          <span class="course-item__duration">10:00</span>
+        </li>
+
+        <li class="course-item">
+          <span class="course-item__num">06</span>
+          <span class="course-item__icon"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polygon points="10 8 16 12 10 16 10 8" fill="currentColor" stroke="none"/></svg></span>
+          <span class="course-item__title">Fondsliste</span>
+          <a href="#" class="course-item__btn">zum Kurs <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor" stroke="none"><polygon points="5 3 19 12 5 21 5 3"/></svg></a>
+          <span class="course-item__duration">10:00</span>
+        </li>
+
+        <li class="course-item">
+          <span class="course-item__num">07</span>
+          <span class="course-item__icon"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polygon points="10 8 16 12 10 16 10 8" fill="currentColor" stroke="none"/></svg></span>
+          <span class="course-item__title">Betriebliche Altersversorgung für Arbeitnehmer</span>
+          <a href="#" class="course-item__btn">zum Kurs <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor" stroke="none"><polygon points="5 3 19 12 5 21 5 3"/></svg></a>
+          <span class="course-item__duration">10:00</span>
+        </li>
+
+        <li class="course-item">
+          <span class="course-item__num">08</span>
+          <span class="course-item__icon"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polygon points="10 8 16 12 10 16 10 8" fill="currentColor" stroke="none"/></svg></span>
+          <span class="course-item__title">Betriebliche Altersversorgung für Arbeitgeber</span>
+          <a href="#" class="course-item__btn">zum Kurs <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor" stroke="none"><polygon points="5 3 19 12 5 21 5 3"/></svg></a>
+          <span class="course-item__duration">10:00</span>
+        </li>
+
+        <li class="course-item">
+          <span class="course-item__num">09</span>
+          <span class="course-item__icon"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polygon points="10 8 16 12 10 16 10 8" fill="currentColor" stroke="none"/></svg></span>
+          <span class="course-item__title">Ganzheitliches Finanzmanagement</span>
+          <a href="#" class="course-item__btn">zum Kurs <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor" stroke="none"><polygon points="5 3 19 12 5 21 5 3"/></svg></a>
+          <span class="course-item__duration">10:00</span>
+        </li>
+
+        <li class="course-item">
+          <span class="course-item__num">10</span>
+          <span class="course-item__icon"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polygon points="10 8 16 12 10 16 10 8" fill="currentColor" stroke="none"/></svg></span>
+          <span class="course-item__title">Sachversicherungen</span>
+          <a href="#" class="course-item__btn">zum Kurs <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor" stroke="none"><polygon points="5 3 19 12 5 21 5 3"/></svg></a>
+          <span class="course-item__duration">10:00</span>
+        </li>
+
+        <li class="course-item">
+          <span class="course-item__num">11</span>
+          <span class="course-item__icon"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polygon points="10 8 16 12 10 16 10 8" fill="currentColor" stroke="none"/></svg></span>
+          <span class="course-item__title">Sicherung der Gesundheit (Krankenversicherung)</span>
+          <a href="#" class="course-item__btn">zum Kurs <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor" stroke="none"><polygon points="5 3 19 12 5 21 5 3"/></svg></a>
+          <span class="course-item__duration">10:00</span>
+        </li>
+
+      </ol>
+    </div>
+  </section>
+
+  <!-- ── CTA SECTION ──────────────────────────────────────────────── -->
+  <section class="cta-section" id="paket">
+    <div class="cta-section__inner">
+      <div class="cta-section__text">
+        <span class="label">Komplettpaket</span>
+        <h2 class="cta-section__title">Alle 11 Kurse. Ein Preis. Dein gesamtes Finanzwissen.</h2>
+        <p class="cta-section__desc">Von Steuern über Altersversorgung bis hin zum ganzheitlichen Finanzmanagement — hol dir das komplette Paket und starte noch heute in deine finanzielle Unabhängigkeit.</p>
+        <div class="cta-section__actions">
+          <a href="#kontakt" class="btn btn--accent">
+            <span class="btn--accent__text">Jetzt kaufen</span>
+            <span class="btn--accent__icon">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 7h10v10"/><path d="M7 17 17 7"/></svg>
+            </span>
+          </a>
+          <a href="#kurse" class="btn btn--light">Kurse ansehen</a>
+        </div>
+      </div>
+      <div class="cta-section__benefits">
+        <ul class="benefit-list">
+          <li class="benefit-list__item">
+            <span class="benefit-list__icon"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></span>
+            <span>Zugang zu allen 11 Kursen auf einmal</span>
+          </li>
+          <li class="benefit-list__item">
+            <span class="benefit-list__icon"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></span>
+            <span>Lebenslanger Zugang — jederzeit und überall</span>
+          </li>
+          <li class="benefit-list__item">
+            <span class="benefit-list__icon"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></span>
+            <span>Praxisnahe Inhalte von einer zertifizierten Finanzexpertin</span>
+          </li>
+          <li class="benefit-list__item">
+            <span class="benefit-list__icon"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></span>
+            <span>Von Steuern bis Krankenversicherung — alles in einem Paket</span>
+          </li>
+          <li class="benefit-list__item">
+            <span class="benefit-list__icon"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></span>
+            <span>Individuell anwendbar — für Arbeitnehmer & Selbstständige</span>
+          </li>
+          <li class="benefit-list__item">
+            <span class="benefit-list__icon"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></span>
+            <span>Regelmäßige Updates & neue Inhalte inklusive</span>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── KUNDENSTIMMEN ─────────────────────────────────────────── -->
+  <section class="testimonials" id="kundenstimmen">
+    <div class="testimonials__inner">
+
+      <div class="testimonials__header">
+        <div>
+          <span class="label">Kundenstimmen</span>
+          <h2 class="testimonials__title">Was meine Kunden sagen</h2>
+        </div>
+        <div class="testimonials__nav">
+          <button class="testimonials__btn" id="prevBtn" aria-label="Vorherige">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 18l-6-6 6-6"/></svg>
+          </button>
+          <button class="testimonials__btn" id="nextBtn" aria-label="Nächste">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 18l6-6-6-6"/></svg>
+          </button>
+        </div>
+      </div>
+
+      <div class="testimonials__viewport">
+        <div class="testimonials__track" id="testimonialTrack">
+
+          <article class="tcard">
+            <div class="tcard__stars">★★★★★ <span class="tcard__score">5,0</span></div>
+            <div class="tcard__meta">von Steffen R., Düsseldorf 40239 &nbsp;·&nbsp; 07.05.2012</div>
+            <h3 class="tcard__title">„Zeitnahe, kompetente und freundliche Beratung durch Frau Koch"</h3>
+            <p class="tcard__text">Schoen, sich an dieser Stelle einmal fuer die waehrend der vergangenen Jahre erhaltene Unterstuetzung bedanken zu koennen! Beste Gruesse, Steffen R.</p>
+            <div class="tcard__badge"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg> Geprüft</div>
+          </article>
+
+          <article class="tcard">
+            <div class="tcard__stars">★★★★★ <span class="tcard__score">5,0</span></div>
+            <div class="tcard__meta">von Merle S., Frankfurt am Main 60433 &nbsp;·&nbsp; 04.05.2012</div>
+            <h3 class="tcard__title">„Rundumberatung in Frankfurt"</h3>
+            <p class="tcard__text">Neben Frau Kochs Kompetenz und Freundlichkeit war ich auch von den technischen Möglichkeiten MLP angetan (Finance Pilot, Recherchemöglichkeiten beim Versicherungsvergleich, programmgestützte Finanzplanung). Prima finde ich auch die Unterstützung durch die „helfenden Hände" im MLP Office. Daher empfehle ich den Service gerne weiter.</p>
+            <div class="tcard__badge"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg> Geprüft</div>
+          </article>
+
+          <article class="tcard">
+            <div class="tcard__stars">★★★★★ <span class="tcard__score">5,0</span></div>
+            <div class="tcard__meta">von M. M., Mainz 55116 &nbsp;·&nbsp; 03.05.2012</div>
+            <h3 class="tcard__title">„Große Hilfe beim Einstieg in die Selbstständigkeit"</h3>
+            <p class="tcard__text">Extrem hilfreich war für mich das breitgefächerte und flexible Wissen von Frau Koch vor und während meiner Existenzgründung. BAV, KV sowie Business Plan und Leasing sind dank Frau Koch jetzt keine unbekannten Gebiete mehr. Auch in Zukunft wird Frau Koch mein Ansprechpartner für neue Themen in der Selbstständigkeit bleiben.</p>
+            <div class="tcard__badge"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg> Geprüft</div>
+          </article>
+
+          <article class="tcard">
+            <div class="tcard__stars">★★★★★ <span class="tcard__score">5,0</span></div>
+            <div class="tcard__meta">von M. S., Kelkheim 65779 &nbsp;·&nbsp; 03.05.2012</div>
+            <h3 class="tcard__title">„Ganzheitliche Beratung mit Hand und Fuss"</h3>
+            <p class="tcard__text">Frau Koch verstand und versteht es, mir mit ihrer freundlichen, erfrischenden Art das für mich persönlich nicht so spannende Thema „Finanzplanung und Altersvorsorge" näher zu bringen. Sie hat mir meinen individuellen Bedarf klar, deutlich und nachvollziehbar aufgezeigt. Mein Vertrauen in ihre Leistung wurde nicht enttäuscht.</p>
+            <div class="tcard__badge"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg> Geprüft</div>
+          </article>
+
+          <article class="tcard">
+            <div class="tcard__stars">★★★★★ <span class="tcard__score">5,0</span></div>
+            <div class="tcard__meta">von Jochen Müller, Frankfurt &nbsp;·&nbsp; 03.05.2012</div>
+            <h3 class="tcard__title">„… nur zu empfehlen"</h3>
+            <p class="tcard__text">Frau Koch hat mich kompetent und verbindlich beraten.</p>
+            <div class="tcard__badge"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg> Geprüft</div>
+          </article>
+
+          <article class="tcard">
+            <div class="tcard__stars">★★★★★ <span class="tcard__score">5,0</span></div>
+            <div class="tcard__meta">von S. C., Mainz 55252 &nbsp;·&nbsp; 03.05.2012</div>
+            <h3 class="tcard__title">„Sehr kompetent und freundlich"</h3>
+            <p class="tcard__text">Bis jetzt konnte uns Frau Koch immer helfen, egal ob Finanzierung, Sparen, Versicherung, Privat oder Geschäftlich. Daher kann und habe ich sie schon mehrmals weiter empfohlen!!</p>
+            <div class="tcard__badge"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg> Geprüft</div>
+          </article>
+
+          <article class="tcard">
+            <div class="tcard__stars">★★★★★ <span class="tcard__score">5,0</span></div>
+            <div class="tcard__meta">von H. Groß, Frankfurt 60437 &nbsp;·&nbsp; 03.05.2012</div>
+            <h3 class="tcard__title">„Geschäftsbeziehung zu MLP Frau Inka Koch"</h3>
+            <p class="tcard__text">Frau Koch hat uns in allen Belangen sehr professionell beraten und die bestmöglichen Chancen aufgezeigt. Die Arbeit mit ihr ist sehr angenehm und sie ist jederzeit erreichbar und kümmert sich umgehend um alle Bitten und Wünsche. Diese Geschäftsbeziehung ist uneingeschränkt weiter zu empfehlen.</p>
+            <div class="tcard__badge"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg> Geprüft</div>
+          </article>
+
+        </div>
+      </div>
+
+      <div class="testimonials__dots" id="testimonialDots"></div>
+
+    </div>
+  </section>
+
+  <!-- ── KONTAKT ──────────────────────────────────────────────────── -->
+  <section class="contact" id="kontakt">
+    <div class="contact__split">
+
+      <!-- Left: content -->
+      <div class="contact__content">
+        <div>
+          <span class="label">Kontakt</span>
+          <h2 class="contact__title" style="margin-top:.5rem">Lass uns ins Gespräch kommen.</h2>
+        </div>
+        <p class="contact__desc">Du hast Fragen zu meinen Kursen oder möchtest mehr über meine Arbeit erfahren? Ich freue mich auf deine Nachricht.</p>
+
+        <div class="contact-info">
+          <div class="contact-info__item">
+            <div class="contact-info__icon">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13S3 17 3 10a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+            </div>
+            <div>
+              <div class="contact-info__label">Anschrift</div>
+              <div class="contact-info__value">Musterstraße 12, 12345 Musterstadt</div>
+            </div>
+          </div>
+          <div class="contact-info__item">
+            <div class="contact-info__icon">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></svg>
+            </div>
+            <div>
+              <div class="contact-info__label">E-Mail</div>
+              <div class="contact-info__value"><a href="mailto:info@inka-koch.com">info@inka-koch.com</a></div>
+            </div>
+          </div>
+          <div class="contact-info__item">
+            <div class="contact-info__icon">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 12a19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 3.61 1.2h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L7.91 8.84a16 16 0 0 0 6 6l.95-.95a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 21.73 16.92z"/></svg>
+            </div>
+            <div>
+              <div class="contact-info__label">Telefon</div>
+              <div class="contact-info__value"><a href="tel:+49000000000">+49 000 000 000</a></div>
+            </div>
+          </div>
+        </div>
+
+        <div>
+          <button class="btn btn--accent" id="openContactModal">
+            <span class="btn--accent__text">Nachricht schreiben</span>
+            <span class="btn--accent__icon">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 7h10v10"/><path d="M7 17 17 7"/></svg>
+            </span>
+          </button>
+        </div>
+      </div>
+
+      <!-- Right: full-bleed visual -->
+      <div class="contact__visual">
+        <img src="assets/img/contact-bg.jpg" alt="Frankfurt Skyline bei Sonnenuntergang">
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ── KONTAKT MODAL ──────────────────────────────────────────────── -->
+  <div class="contact-modal" id="contactModal" aria-hidden="true" role="dialog" aria-modal="true" aria-labelledby="contactModalTitle">
+    <div class="contact-modal__backdrop" id="contactModalBackdrop"></div>
+    <div class="contact-modal__card">
+      <div class="contact-modal__header">
+        <h2 class="contact-modal__title" id="contactModalTitle">Nachricht senden</h2>
+        <button class="contact-modal__close" id="closeContactModal" aria-label="Schließen">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round"><path d="M18 6 6 18M6 6l12 12"/></svg>
+        </button>
+      </div>
+      <form class="contact-form" novalidate>
+        <div class="contact-form__row">
+          <div class="field">
+            <label for="vorname">Vorname</label>
+            <input type="text" id="vorname" name="vorname" placeholder="Max" autocomplete="given-name" required>
+          </div>
+          <div class="field">
+            <label for="nachname">Nachname</label>
+            <input type="text" id="nachname" name="nachname" placeholder="Mustermann" autocomplete="family-name" required>
+          </div>
+        </div>
+        <div class="field">
+          <label for="contact-email">E-Mail-Adresse</label>
+          <input type="email" id="contact-email" name="email" placeholder="max@beispiel.de" autocomplete="email" required>
+        </div>
+        <div class="field">
+          <label for="nachricht">Nachricht</label>
+          <textarea id="nachricht" name="nachricht" placeholder="Ich habe eine Frage zu …" required></textarea>
+        </div>
+        <div class="contact-form__dsgvo">
+          <input type="checkbox" id="dsgvo" name="dsgvo" required>
+          <label for="dsgvo">Ich habe die <a href="#" target="_blank">Datenschutzerklärung</a> gelesen und stimme der Verarbeitung meiner Daten zu.</label>
+        </div>
+        <div class="contact-form__submit">
+          <button type="submit" class="btn btn--accent">
+            <span class="btn--accent__text">Nachricht senden</span>
+            <span class="btn--accent__icon">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 7h10v10"/><path d="M7 17 17 7"/></svg>
+            </span>
+          </button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <script>
+    const hamburger = document.getElementById('hamburger');
+    const mobileMenu = document.getElementById('mobileMenu');
+
+    function toggleMenu(open) {
+      hamburger.classList.toggle('is-open', open);
+      mobileMenu.classList.toggle('is-open', open);
+      mobileMenu.setAttribute('aria-hidden', !open);
+      hamburger.setAttribute('aria-expanded', open);
+      document.body.classList.toggle('menu-open', open);
+    }
+
+    hamburger.addEventListener('click', () => toggleMenu(!mobileMenu.classList.contains('is-open')));
+    document.getElementById('menuClose').addEventListener('click', () => toggleMenu(false));
+    mobileMenu.querySelectorAll('a').forEach(link => link.addEventListener('click', () => toggleMenu(false)));
+    document.addEventListener('keydown', e => {
+      if (e.key === 'Escape') {
+        toggleMenu(false);
+        toggleContactModal(false);
+      }
+    });
+
+    // ── Contact Modal ───────────────────────────────────────────────
+    const contactModal = document.getElementById('contactModal');
+    function toggleContactModal(open) {
+      contactModal.classList.toggle('is-open', open);
+      contactModal.setAttribute('aria-hidden', !open);
+      document.body.style.overflow = open ? 'hidden' : '';
+      if (open) document.getElementById('vorname').focus();
+    }
+    document.getElementById('openContactModal').addEventListener('click', () => toggleContactModal(true));
+    document.getElementById('closeContactModal').addEventListener('click', () => toggleContactModal(false));
+    document.getElementById('contactModalBackdrop').addEventListener('click', () => toggleContactModal(false));
+
+    // ── Testimonial Slider ──────────────────────────────────────────
+    (function() {
+      const track   = document.getElementById('testimonialTrack');
+      const dotsEl  = document.getElementById('testimonialDots');
+      const prevBtn = document.getElementById('prevBtn');
+      const nextBtn = document.getElementById('nextBtn');
+      const cards   = track.querySelectorAll('.tcard');
+      let current   = 0;
+
+      function visibleCount() {
+        if (window.innerWidth <= 580) return 1;
+        if (window.innerWidth <= 900) return 2;
+        return 3;
+      }
+
+      function maxIndex() { return cards.length - visibleCount(); }
+
+      function buildDots() {
+        dotsEl.innerHTML = '';
+        for (let i = 0; i <= maxIndex(); i++) {
+          const d = document.createElement('button');
+          d.className = 'testimonials__dot' + (i === current ? ' active' : '');
+          d.addEventListener('click', () => goTo(i));
+          dotsEl.appendChild(d);
+        }
+      }
+
+      function goTo(idx) {
+        current = Math.max(0, Math.min(idx, maxIndex()));
+        const cardW = cards[0].offsetWidth + 24; // gap 1.5rem = 24px
+        track.style.transform = `translateX(-${current * cardW}px)`;
+        dotsEl.querySelectorAll('.testimonials__dot').forEach((d, i) => d.classList.toggle('active', i === current));
+        prevBtn.disabled = current === 0;
+        nextBtn.disabled = current >= maxIndex();
+      }
+
+      prevBtn.addEventListener('click', () => goTo(current - 1));
+      nextBtn.addEventListener('click', () => goTo(current + 1));
+      window.addEventListener('resize', () => { buildDots(); goTo(Math.min(current, maxIndex())); });
+
+      // Touch swipe — on viewport so iOS Safari doesn't lose target after transform
+      const viewport = track.parentElement;
+      let touchStartX = 0;
+      let touchStartY = 0;
+      viewport.addEventListener('touchstart', e => {
+        touchStartX = e.touches[0].clientX;
+        touchStartY = e.touches[0].clientY;
+      }, { passive: true });
+      viewport.addEventListener('touchend', e => {
+        const diffX = touchStartX - e.changedTouches[0].clientX;
+        const diffY = touchStartY - e.changedTouches[0].clientY;
+        if (Math.abs(diffX) > Math.abs(diffY) && Math.abs(diffX) > 40) {
+          goTo(diffX > 0 ? current + 1 : current - 1);
+        }
+      }, { passive: true });
+
+      buildDots();
+      goTo(0);
+    })();
+  </script>
+
+
+  <!-- ── FOOTER ────────────────────────────────────────────────────── -->
+  <footer class="site-footer">
+    <div class="site-footer__inner">
+
+      <!-- Top row -->
+      <div class="site-footer__top">
+
+        <!-- Left: brand + description + socials -->
+        <div class="site-footer__brand">
+          <a href="/" class="site-footer__logo">Inka Koch<span style="color:var(--color-accent)">.</span></a>
+          <p class="site-footer__desc">Finance Planning – klares Finanzwissen für deine wirtschaftliche Unabhängigkeit. Online-Kurse, die wirklich etwas verändern.</p>
+          <div class="site-footer__socials">
+            <a href="#" aria-label="Instagram" class="site-footer__social-link">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg>
+            </a>
+            <a href="#" aria-label="LinkedIn" class="site-footer__social-link">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg>
+            </a>
+          </div>
+        </div>
+
+        <!-- Right: link columns -->
+        <div class="site-footer__nav-grid">
+          <div class="site-footer__nav-col">
+            <h3 class="site-footer__nav-title">Navigation</h3>
+            <ul class="site-footer__nav-list">
+              <li><a href="#startseite">Startseite</a></li>
+              <li><a href="#kurse">Kursüberblick</a></li>
+              <li><a href="#paket">Alle Kurse</a></li>
+              <li><a href="#kundenstimmen">Kundenstimmen</a></li>
+              <li><a href="#kontakt">Kontakt</a></li>
+            </ul>
+          </div>
+          <div class="site-footer__nav-col">
+            <h3 class="site-footer__nav-title">Kurse</h3>
+            <ul class="site-footer__nav-list">
+              <li><a href="#kurse">Steuerseminar</a></li>
+              <li><a href="#kurse">Altersversorgung</a></li>
+              <li><a href="#kurse">Vermögensmanagement</a></li>
+              <li><a href="#kurse">Liquiditätsmanagement</a></li>
+              <li><a href="#kurse">Alle 11 Kurse →</a></li>
+            </ul>
+          </div>
+          <div class="site-footer__nav-col">
+            <h3 class="site-footer__nav-title">Rechtliches</h3>
+            <ul class="site-footer__nav-list">
+              <li><a href="/impressum.html">Impressum</a></li>
+              <li><a href="/datenschutz.html">Datenschutzerklärung</a></li>
+            </ul>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- Bottom row -->
+      <div class="site-footer__bottom">
+        <p class="site-footer__copyright">© <span id="footerYear"></span> inka-koch.com. Alle Rechte vorbehalten.</p>
+        <p class="site-footer__credit">Webdesign realisiert durch <a href="https://www.brandheiss.agency/" target="_blank" rel="noopener">BrandHeiss Agency 🔥</a></p>
+      </div>
+
+    </div>
+  </footer>
+
+  <script>document.getElementById('footerYear').textContent = new Date().getFullYear();</script>
+</body>
+</html>
