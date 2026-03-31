@@ -260,8 +260,6 @@ body.menu-open { overflow: hidden; }
 
 .course-list { list-style: none; margin: 0; padding: 0; }
 .course-item { display: grid; grid-template-columns: 2rem 1.5rem 1fr auto auto; align-items: center; gap: 1rem; padding: 1.1rem 0; border-bottom: 1px solid var(--color-border-light); transition: background var(--ease); }
-.course-item__duration { order: 4; }
-.course-item__btn { order: 5; margin-left: auto; }
 .course-item:first-child { border-top: 1px solid var(--color-border-light); }
 .course-item:hover { background: rgba(226,0,116,.03); margin: 0 -1rem; padding-left: 1rem; padding-right: 1rem; border-radius: var(--radius-sm); }
 .course-item__num { font-size: var(--text-xs); font-weight: 600; color: var(--color-muted); letter-spacing: .05em; }
