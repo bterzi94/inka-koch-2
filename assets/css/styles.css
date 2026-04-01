@@ -214,16 +214,18 @@ body.menu-open { overflow: hidden; }
 .hero { position: relative; display: flex; align-items: center; border-radius: var(--radius-section) var(--radius-section) 0 0; margin-top: calc(var(--z-sticky) * 1px + 1.5rem); overflow: hidden; margin-top: calc(68px + 1.5rem); }
 .hero__bg { position: absolute; inset: 0; background: url('../img/hero-bg.jpg') center/cover no-repeat; z-index: 0; }
 .hero__bg::after { content: ''; position: absolute; inset: 0; background: rgba(255,255,255,.90); }
+.hero .btn--light { color: var(--color-text); border-color: rgba(31,31,31,.25); }
+.hero .btn--light:hover { border-color: var(--color-text); background: rgba(31,31,31,.05); }
 .hero__inner { position: relative; z-index: 1; width: 100%; max-width: var(--container-max); margin: 0 auto; padding: 1.5rem var(--container-pad-x); display: grid; grid-template-columns: 1fr 2fr; gap: 4rem; align-items: center; }
 .hero__text { display: flex; flex-direction: column; gap: .85rem; justify-content: center; }
-.hero__title { font-size: clamp(3rem, 6.5vw, 5.5rem); font-weight: 800; color: var(--color-cream); line-height: .95; letter-spacing: -.03em; margin: 0; }
+.hero__title { font-size: clamp(3rem, 6.5vw, 5.5rem); font-weight: 800; color: var(--color-text); line-height: .95; letter-spacing: -.03em; margin: 0; }
 .hero__title-name { display: block; font-weight: 400; font-size: .55em; letter-spacing: -.01em; opacity: .9; margin-bottom: .1em; }
-.hero__desc { color: rgba(255,252,245,.65); font-size: var(--text-base); line-height: 1.5; max-width: 440px; margin: 0; }
+.hero__desc { color: rgba(31,31,31,.65); font-size: var(--text-base); line-height: 1.5; max-width: 440px; margin: 0; }
 .hero__footer { display: flex; align-items: center; gap: 2rem; flex-wrap: wrap; }
 .hero__rating { display: flex; align-items: center; gap: .5rem; }
 .hero__rating-pin { color: #e05a2b; display: flex; align-items: center; }
-.hero__rating-name { font-size: var(--text-sm); font-weight: 600; color: var(--color-cream); }
-.hero__stars { color: #f5c842; font-size: .9rem; letter-spacing: 2px; }
+.hero__rating-name { font-size: var(--text-sm); font-weight: 600; color: var(--color-text); }
+.hero__stars { color: #d4a000; font-size: .9rem; letter-spacing: 2px; }
 .hero__collage { display: flex; justify-content: flex-end; align-items: center; }
 .hero__collage img { max-width: 100%; height: auto; filter: drop-shadow(0 30px 60px rgba(0,0,0,.5)); }
 
