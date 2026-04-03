@@ -509,38 +509,49 @@
           <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round"><path d="M18 6 6 18M6 6l12 12"/></svg>
         </button>
       </div>
-      <form class="contact-form" novalidate>
+      <form class="contact-form" id="contactForm" novalidate>
         <div class="contact-form__row">
           <div class="field">
             <label for="vorname">Vorname</label>
             <input type="text" id="vorname" name="vorname" placeholder="Max" autocomplete="given-name" required>
+            <span class="field__error" id="error-vorname"></span>
           </div>
           <div class="field">
             <label for="nachname">Nachname</label>
             <input type="text" id="nachname" name="nachname" placeholder="Mustermann" autocomplete="family-name" required>
+            <span class="field__error" id="error-nachname"></span>
           </div>
         </div>
         <div class="field">
           <label for="contact-email">E-Mail-Adresse</label>
           <input type="email" id="contact-email" name="email" placeholder="max@beispiel.de" autocomplete="email" required>
+          <span class="field__error" id="error-email"></span>
         </div>
         <div class="field">
           <label for="nachricht">Nachricht</label>
           <textarea id="nachricht" name="nachricht" placeholder="Ich habe eine Frage zu …" required></textarea>
+          <span class="field__error" id="error-nachricht"></span>
         </div>
         <div class="contact-form__dsgvo">
           <input type="checkbox" id="dsgvo" name="dsgvo" required>
           <label for="dsgvo">Ich habe die <a href="datenschutz.html" target="_blank">Datenschutzerklärung</a> gelesen und stimme der Verarbeitung meiner Daten zu.</label>
+          <span class="field__error" id="error-dsgvo"></span>
         </div>
         <div class="contact-form__submit">
-          <button type="submit" class="btn btn--accent">
-            <span class="btn--accent__text">Nachricht senden</span>
-            <span class="btn--accent__icon">
+          <button type="submit" class="btn btn--accent" id="contactSubmitBtn">
+            <span class="btn--accent__text" id="submitBtnText">Nachricht senden</span>
+            <span class="btn--accent__icon" id="submitBtnIcon">
               <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 7h10v10"/><path d="M7 17 17 7"/></svg>
             </span>
           </button>
         </div>
+        <div class="form-feedback form-feedback--error" id="formError" aria-live="polite"></div>
       </form>
+      <div class="form-success" id="formSuccess" aria-live="polite">
+        <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="20 6 9 17 4 12"/></svg>
+        <h3>Nachricht gesendet!</h3>
+        <p>Vielen Dank. Ich melde mich so schnell wie möglich bei dir.</p>
+      </div>
     </div>
   </div>
 
@@ -573,10 +584,102 @@
       contactModal.setAttribute('aria-hidden', !open);
       document.body.style.overflow = open ? 'hidden' : '';
       if (open) document.getElementById('vorname').focus();
+      if (!open) resetForm();
     }
     document.getElementById('openContactModal').addEventListener('click', () => toggleContactModal(true));
     document.getElementById('closeContactModal').addEventListener('click', () => toggleContactModal(false));
     document.getElementById('contactModalBackdrop').addEventListener('click', () => toggleContactModal(false));
+
+    // ── Contact Form ────────────────────────────────────────────────
+    const form        = document.getElementById('contactForm');
+    const submitBtn   = document.getElementById('contactSubmitBtn');
+    const submitText  = document.getElementById('submitBtnText');
+    const submitIcon  = document.getElementById('submitBtnIcon');
+    const formError   = document.getElementById('formError');
+    const formSuccess = document.getElementById('formSuccess');
+
+    function showFieldError(id, msg) {
+      const el = document.getElementById('error-' + id);
+      if (el) { el.textContent = msg; el.style.display = msg ? 'block' : 'none'; }
+      const input = document.getElementById(id === 'email' ? 'contact-email' : id);
+      if (input) input.classList.toggle('is-invalid', !!msg);
+    }
+
+    function clearErrors() {
+      ['vorname','nachname','email','nachricht','dsgvo'].forEach(id => showFieldError(id, ''));
+      formError.textContent = '';
+      formError.style.display = 'none';
+    }
+
+    function validateForm() {
+      let valid = true;
+      const v = form.vorname.value.trim();
+      const n = form.nachname.value.trim();
+      const e = form.email.value.trim();
+      const m = form.nachricht.value.trim();
+      const d = form.dsgvo.checked;
+
+      if (!v) { showFieldError('vorname', 'Bitte gib deinen Vornamen ein.'); valid = false; }
+      if (!n) { showFieldError('nachname', 'Bitte gib deinen Nachnamen ein.'); valid = false; }
+      if (!e) { showFieldError('email', 'Bitte gib deine E-Mail-Adresse ein.'); valid = false; }
+      else if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(e)) { showFieldError('email', 'Bitte gib eine gültige E-Mail-Adresse ein.'); valid = false; }
+      if (!m) { showFieldError('nachricht', 'Bitte schreib uns eine Nachricht.'); valid = false; }
+      if (!d) { showFieldError('dsgvo', 'Bitte stimme der Datenschutzerklärung zu.'); valid = false; }
+      return valid;
+    }
+
+    function setLoading(loading) {
+      submitBtn.disabled = loading;
+      submitText.textContent = loading ? 'Wird gesendet…' : 'Nachricht senden';
+      submitIcon.style.opacity = loading ? '0' : '1';
+    }
+
+    function resetForm() {
+      form.reset();
+      clearErrors();
+      setLoading(false);
+      form.style.display = '';
+      formSuccess.style.display = 'none';
+    }
+
+    form.addEventListener('submit', async (e) => {
+      e.preventDefault();
+      clearErrors();
+      if (!validateForm()) return;
+      setLoading(true);
+      try {
+        const res = await fetch('https://submit-form.com/ApLF4jPor', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
+          body: JSON.stringify({
+            vorname:  form.vorname.value.trim(),
+            nachname: form.nachname.value.trim(),
+            email:    form.email.value.trim(),
+            nachricht: form.nachricht.value.trim()
+          })
+        });
+        if (res.ok) {
+          form.style.display = 'none';
+          formSuccess.style.display = 'flex';
+        } else {
+          throw new Error('Server error');
+        }
+      } catch {
+        setLoading(false);
+        formError.textContent = 'Es ist ein Fehler aufgetreten. Bitte versuche es erneut oder schreib uns direkt an info@inkakoch.com.';
+        formError.style.display = 'block';
+      }
+    });
+
+    // Clear field error on input
+    ['vorname','nachname','nachricht'].forEach(id => {
+      const el = document.getElementById(id);
+      if (el) el.addEventListener('input', () => showFieldError(id, ''));
+    });
+    const emailEl = document.getElementById('contact-email');
+    if (emailEl) emailEl.addEventListener('input', () => showFieldError('email', ''));
+    const dsgvoEl = document.getElementById('dsgvo');
+    if (dsgvoEl) dsgvoEl.addEventListener('change', () => showFieldError('dsgvo', ''));
 
     // ── Testimonial Slider ──────────────────────────────────────────
     (function() {
