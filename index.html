@@ -128,11 +128,17 @@
       <div class="value-prop__line"></div>
       <div class="value-prop__right">
         <div class="value-prop__video">
-          <div class="video-facade" id="vimeoFacade" role="button" tabindex="0" aria-label="Video abspielen">
+          <div class="video-facade" id="vimeoFacade">
             <img src="https://vumbnail.com/733611092.jpg" alt="Video: Emotionale Freiheit setzt finanzielle Unabhängigkeit voraus" loading="lazy" decoding="async">
-            <button class="video-facade__play" aria-label="Video abspielen">
+            <button class="video-facade__play" id="vimeoPlayBtn" aria-label="Video abspielen">
               <svg width="28" height="28" viewBox="0 0 24 24" fill="currentColor"><polygon points="5 3 19 12 5 21 5 3"/></svg>
             </button>
+            <div class="video-blocked" id="videoBlocked">
+              <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
+              <p>Dieses Video wird von Vimeo bereitgestellt und erfordert deine Cookie-Zustimmung.</p>
+              <button class="video-blocked__btn" onclick="window.CookieScript && window.CookieScript.instance && window.CookieScript.instance.show()">Cookie-Einstellungen öffnen</button>
+              <span class="video-blocked__hint">Oder klicke unten links auf das Cookie-Symbol.</span>
+            </div>
           </div>
         </div>
       </div>
@@ -766,9 +772,31 @@
 
     // ── Vimeo Facade ────────────────────────────────────────────────
     (function() {
-      const facade = document.getElementById('vimeoFacade');
+      const facade   = document.getElementById('vimeoFacade');
+      const blocked  = document.getElementById('videoBlocked');
+      const playBtn  = document.getElementById('vimeoPlayBtn');
       if (!facade) return;
+
+      function hasCookieConsent() {
+        try {
+          const raw = document.cookie.split('; ').find(r => r.startsWith('CookieScriptConsent='));
+          if (!raw) return false;
+          const val = JSON.parse(decodeURIComponent(raw.split('=').slice(1).join('=')));
+          return val.action === 'accept' || val.action === 'acceptall';
+        } catch { return false; }
+      }
+
+      function updateState() {
+        const allowed = hasCookieConsent();
+        blocked.style.display  = allowed ? 'none' : 'flex';
+        playBtn.style.display  = allowed ? 'flex' : 'none';
+        facade.style.cursor    = allowed ? 'pointer' : 'default';
+        facade.setAttribute('role', allowed ? 'button' : 'presentation');
+        facade.setAttribute('tabindex', allowed ? '0' : '-1');
+      }
+
       function loadVimeo() {
+        if (!hasCookieConsent()) return;
         const wrap = facade.parentElement;
         const iframe = document.createElement('iframe');
         iframe.src = 'https://player.vimeo.com/video/733611092?h=cc9ef056a4&autoplay=1';
@@ -777,6 +805,14 @@
         iframe.allowFullscreen = true;
         wrap.replaceChild(iframe, facade);
       }
+
+      updateState();
+
+      // Listen for Cookie-Script consent events
+      window.addEventListener('CookieScriptAccept', updateState);
+      window.addEventListener('CookieScriptAcceptAll', updateState);
+      window.addEventListener('CookieScriptReject', updateState);
+
       facade.addEventListener('click', loadVimeo);
       facade.addEventListener('keydown', e => { if (e.key === 'Enter' || e.key === ' ') loadVimeo(); });
     })();
