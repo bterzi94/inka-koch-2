@@ -11,6 +11,7 @@
   <meta name="author" content="Inka Koch">
   <meta name="robots" content="index, follow">
   <link rel="canonical" href="https://bterzi94.github.io/inka-koch-2/">
+  <link rel="preload" as="image" href="assets/img/hero-bg.webp" fetchpriority="high">
 
   <!-- Open Graph (Facebook, LinkedIn, WhatsApp) -->
   <meta property="og:type" content="website">
@@ -29,7 +30,9 @@
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&family=Inter:wght@400;500&display=swap" rel="stylesheet">
+  <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&family=Inter:wght@400;500&display=swap">
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&family=Inter:wght@400;500&display=swap" rel="stylesheet" media="print" onload="this.media='all'">
+  <noscript><link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&family=Inter:wght@400;500&display=swap" rel="stylesheet"></noscript>
   <link rel="stylesheet" href="assets/css/styles.css">
   <script type="text/javascript" charset="UTF-8" src="//cdn.cookie-script.com/s/a13606b7302b1c9c69b237a591c49d77.js"></script>
 </head>
@@ -106,7 +109,7 @@
       <div class="hero__collage">
         <picture>
           <source srcset="assets/img/hero-collage.webp" type="image/webp">
-          <img src="assets/img/hero-collage.png" alt="Inka Koch – Financial Planning">
+          <img src="assets/img/hero-collage.png" alt="Inka Koch – Financial Planning" fetchpriority="high" loading="eager">
         </picture>
       </div>
     </div>
@@ -129,12 +132,12 @@
       <div class="value-prop__line"></div>
       <div class="value-prop__right">
         <div class="value-prop__video">
-          <iframe
-            src="https://player.vimeo.com/video/733611092?h=cc9ef056a4"
-            title="Emotionale Freiheit setzt finanzielle Unabhängigkeit voraus"
-            allow="autoplay; fullscreen; picture-in-picture"
-            allowfullscreen>
-          </iframe>
+          <div class="video-facade" id="vimeoFacade" role="button" tabindex="0" aria-label="Video abspielen">
+            <img src="https://vumbnail.com/733611092.jpg" alt="Video: Emotionale Freiheit setzt finanzielle Unabhängigkeit voraus" loading="lazy" decoding="async">
+            <button class="video-facade__play" aria-label="Video abspielen">
+              <svg width="28" height="28" viewBox="0 0 24 24" fill="currentColor"><polygon points="5 3 19 12 5 21 5 3"/></svg>
+            </button>
+          </div>
         </div>
       </div>
       <div class="value-prop__line"></div>
@@ -516,7 +519,7 @@
       <div class="contact__visual">
         <picture>
           <source srcset="assets/img/contact-bg.webp" type="image/webp">
-          <img src="assets/img/contact-bg.jpg" alt="Frankfurt Skyline bei Sonnenuntergang">
+          <img src="assets/img/contact-bg.jpg" alt="Frankfurt Skyline bei Sonnenuntergang" loading="lazy" decoding="async">
         </picture>
       </div>
 
@@ -763,6 +766,23 @@
 
       buildDots();
       goTo(0);
+    })();
+
+    // ── Vimeo Facade ────────────────────────────────────────────────
+    (function() {
+      const facade = document.getElementById('vimeoFacade');
+      if (!facade) return;
+      function loadVimeo() {
+        const wrap = facade.parentElement;
+        const iframe = document.createElement('iframe');
+        iframe.src = 'https://player.vimeo.com/video/733611092?h=cc9ef056a4&autoplay=1';
+        iframe.title = 'Emotionale Freiheit setzt finanzielle Unabhängigkeit voraus';
+        iframe.allow = 'autoplay; fullscreen; picture-in-picture';
+        iframe.allowFullscreen = true;
+        wrap.replaceChild(iframe, facade);
+      }
+      facade.addEventListener('click', loadVimeo);
+      facade.addEventListener('keydown', e => { if (e.key === 'Enter' || e.key === ' ') loadVimeo(); });
     })();
   </script>
 
