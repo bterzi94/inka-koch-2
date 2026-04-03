@@ -212,7 +212,7 @@ body.menu-open { overflow: hidden; }
 
 /* ── HERO ────────────────────────────────────────────────────────── */
 .hero { position: relative; display: flex; align-items: center; border-radius: var(--radius-section) var(--radius-section) 0 0; margin-top: calc(var(--z-sticky) * 1px + 1.5rem); overflow: hidden; margin-top: calc(68px + 1.5rem); }
-.hero__bg { position: absolute; inset: 0; background: url('../img/hero-bg.jpg') center/cover no-repeat; z-index: 0; filter: grayscale(1); }
+.hero__bg { position: absolute; inset: 0; background: url('../img/hero-bg.webp') center/cover no-repeat; z-index: 0; filter: grayscale(1); }
 .hero__bg::after { content: ''; position: absolute; inset: 0; background: rgba(255,255,255,.90); }
 .hero .btn--light { color: var(--color-text); border-color: rgba(31,31,31,.25); }
 .hero .btn--light:hover { border-color: var(--color-text); background: rgba(31,31,31,.05); }
