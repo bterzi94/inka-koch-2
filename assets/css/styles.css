@@ -488,8 +488,7 @@ body.menu-open { overflow: hidden; }
 }
 
 /* ── FOOTER ──────────────────────────────────────────────────────── */
-.site-footer { position: relative; background: var(--color-dark); margin-top: 0; overflow: hidden; }
-.site-footer__bg { position: absolute; inset: 0; background: image-set(url("../img/footer-bg.webp") type("image/webp"), url("../img/footer-bg.jpg") type("image/jpeg")) center/cover no-repeat; opacity: .12; pointer-events: none; }
+.site-footer { background: var(--color-dark); margin-top: 0; }
 .site-footer__inner { max-width: var(--container-max); margin: 0 auto; padding: 0 var(--container-pad-x); }
 
 .site-footer__top { display: flex; gap: 5rem; padding: var(--section-pad-y) 0 3rem; border-bottom: 1px solid var(--color-border-dark); align-items: flex-start; }
